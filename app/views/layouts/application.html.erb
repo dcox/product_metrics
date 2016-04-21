@@ -7,11 +7,23 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-
-<%= yield %>
-
+  <div id="main-container" class="container">
+    <div class="row">
+      <div class="col-md-4"><h1>Product Metrics</h1></div>
+      <div class="col-md-8" id="nav">
+        <ul class="list-inline">
+          <li><h4>log in</h4></li>
+          <li><h4>sign up</h4></li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </div>
+    <div class="row">
+      <%= yield %>
+    </div>
+  </div>
 </body>
 </html>
