@@ -5,4 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   validates_with EmailValidator
+
+  attr_accessor :first_name, :last_name
+
 end
