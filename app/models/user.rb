@@ -6,6 +6,4 @@ class User < ActiveRecord::Base
 
   validates_with EmailValidator
 
-  attr_accessor :first_name, :last_name
-
 end
