@@ -1,28 +1,20 @@
 class MetricsController < ApplicationController
   before_action :set_metric, only: [:show, :edit, :update, :destroy]
 
-  # GET /metrics
-  # GET /metrics.json
   def index
     @metrics = Metric.all
   end
 
-  # GET /metrics/1
-  # GET /metrics/1.json
   def show
   end
 
-  # GET /metrics/new
   def new
     @metric = Metric.new
   end
 
-  # GET /metrics/1/edit
   def edit
   end
 
-  # POST /metrics
-  # POST /metrics.json
   def create
     @metric = Metric.new(metric_params)
 
@@ -37,8 +29,6 @@ class MetricsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /metrics/1
-  # PATCH/PUT /metrics/1.json
   def update
     respond_to do |format|
       if @metric.update(metric_params)
@@ -51,8 +41,6 @@ class MetricsController < ApplicationController
     end
   end
 
-  # DELETE /metrics/1
-  # DELETE /metrics/1.json
   def destroy
     @metric.destroy
     respond_to do |format|
