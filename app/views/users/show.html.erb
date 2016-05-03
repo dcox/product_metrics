@@ -15,4 +15,9 @@
 </div>
 <div class="col-md-4">
   <h4>Metrics</h4>
+    <ul>
+      <% for metric in @user.metrics %>
+      <li><%= metric.name %></li>
+      <% end %>
+    </ul>
 </div>
