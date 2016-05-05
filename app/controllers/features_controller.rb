@@ -12,30 +12,24 @@ class FeaturesController < ApplicationController
     @feature = Feature.new(feature_params)
     @feature.user_id = current_user.id
 
-    respond_to do |format|
-      if @feature.save
-        format.html { redirect_to '/', notice: 'Feature was successfully created.' }
-      else
-        format.html { render :new }
-      end
+    if @feature.save
+      redirect_to '/', notice: 'Feature was successfully created.' 
+    else
+      render :new 
     end
   end
 
   def update
-    respond_to do |format|
-      if @feature.update(feature_params)
-        format.html { redirect_to @feature, notice: 'Feature was successfully updated.' }
-      else
-        format.html { render :edit }
-      end
+    if @feature.update(feature_params)
+      redirect_to @feature, notice: 'Feature was successfully updated.' 
+    else
+      render :edit 
     end
   end
 
   def destroy
     @feature.destroy
-    respond_to do |format|
-      format.html { redirect_to features_url, notice: 'Feature was successfully destroyed.' }
-    end
+    redirect_to features_url, notice: 'Feature was successfully destroyed.' 
   end
 
   private
