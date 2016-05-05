@@ -14,7 +14,7 @@ class FeaturesController < ApplicationController
 
     respond_to do |format|
       if @feature.save
-        format.html { redirect_to root_path, notice: 'Feature was successfully created.' }
+        format.html { redirect_to '/', notice: 'Feature was successfully created.' }
       else
         format.html { render :new }
       end
