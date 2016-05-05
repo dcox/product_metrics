@@ -11,17 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160503184017) do
+ActiveRecord::Schema.define(version: 20160503231211) do
+
+  create_table "features", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "user_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "features", ["user_id"], name: "index_features_on_user_id"
 
   create_table "metrics", force: :cascade do |t|
     t.string   "name"
     t.string   "definition"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "user_id"
+    t.integer  "user_id",    null: false
+    t.integer  "feature_id", null: false
   end
 
   add_index "metrics", ["user_id"], name: "index_metrics_on_user_id"
+  add_index "metrics", ["feature_id"], name: "index_metrics_on_feature_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

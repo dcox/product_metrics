@@ -19,27 +19,19 @@ class MetricsController < ApplicationController
     @metric = Metric.new(metric_params)
     @metric.user_id = current_user.id
 
-    respond_to do |format|
-      if @metric.save
-        format.html { redirect_to @metric, notice: 'Metric was successfully created.' }
-        format.json { render :show, status: :created, location: @metric }
-      else
-        format.html { render :new }
-        format.json { render json: @metric.errors, status: :unprocessable_entity }
-      end
+    if @metric.save
+      redirect_to @metric, notice: 'Metric was successfully created.' 
+    else
+      render :new 
     end
   end
 
   def update
     if @metric.user == current_user
-      respond_to do |format|
-        if @metric.update(metric_params)
-          format.html { redirect_to @metric, notice: 'Metric was successfully updated.' }
-          format.json { render :show, status: :ok, location: @metric }
-        else
-          format.html { render :edit }
-          format.json { render json: @metric.errors, status: :unprocessable_entity }
-        end
+      if @metric.update(metric_params)
+        redirect_to @metric, notice: 'Metric was successfully updated.' 
+      else
+        render :edit 
       end
     else
       redirect_to root_path, notice: 'You can only edit your own metrics.' 
@@ -49,10 +41,7 @@ class MetricsController < ApplicationController
   def destroy
     if @metric.user == current_user
       @metric.destroy
-      respond_to do |format|
-        format.html { redirect_to metrics_url, notice: 'Metric was successfully destroyed.' }
-        format.json { head :no_content }
-      end
+      redirect_to metrics_url, notice: 'Metric was successfully destroyed.' 
     else
       redirect_to root_path, notice: 'You can only delete your own metrics.'
     end
@@ -66,6 +55,6 @@ class MetricsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def metric_params
-      params.require(:metric).permit(:name, :definition)
+      params.require(:metric).permit(:name, :definition, :feature_id)
     end
 end
