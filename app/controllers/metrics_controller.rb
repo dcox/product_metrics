@@ -29,7 +29,7 @@ class MetricsController < ApplicationController
   def update
     if @metric.user == current_user
       if @metric.update(metric_params)
-        redirect_to @metric, notice: 'Metric was successfully updated.' }
+        redirect_to @metric, notice: 'Metric was successfully updated.' 
       else
         render :edit 
       end
