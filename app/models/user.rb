@@ -8,5 +8,7 @@ class User < ActiveRecord::Base
   has_many :metrics, through: :features
 
   validates_with EmailValidator
+  validates :first_name, presence: true
+  validates :last_name, presence: true
 
 end
