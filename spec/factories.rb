@@ -1,4 +1,8 @@
 FactoryGirl.define do
+  factory :metric do
+    name        "Number of active SLAs"
+    feature
+  end
   factory :feature do
     name        "Service Level Agreements"
     user
