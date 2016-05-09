@@ -1,4 +1,7 @@
 FactoryGirl.define do
+  factory :feature do
+    name        "Service Level Agreements"
+  end
   factory :user do
     email       "dcox@zendesk.com"
     password    "hello world"

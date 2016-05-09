@@ -18,4 +18,6 @@ RSpec.describe User, type: :model do
     FactoryGirl.build(:user, :last_name => nil).should_not be_valid
   end
 
+  it { should have_many(:features) }  
+  it { should have_many(:metrics).through(:features) }
 end
