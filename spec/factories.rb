@@ -1,15 +1,11 @@
 FactoryGirl.define do
+  
   sequence :email do |n|
     "person#{n}@zendesk.com"
   end
 
   sequence :name do |n|
     "feature#{n}"
-  end
-
-  factory :metric do
-    name        "Number of active SLAs"
-    feature
   end
 
   factory :user do
@@ -23,4 +19,10 @@ FactoryGirl.define do
     name        { generate(:name) }
     user
   end
+
+  factory :metric do
+    name        { generate(:name) }
+    feature
+  end
+
 end

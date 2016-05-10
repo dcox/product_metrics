@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Feature, type: :model do
+
+  it { should belong_to(:user) }
+  it { should have_many(:metrics) }
+  
   it "should have valid factory" do
     feature = FactoryGirl.build(:feature)
     expect(feature).to be_valid
@@ -10,9 +14,6 @@ RSpec.describe Feature, type: :model do
     feature = FactoryGirl.build(:feature, :name => nil)
     expect(feature).to_not be_valid
   end
-
-  it { should belong_to(:user) }
-  it { should have_many(:metrics) }
 
   it "validates uniqueness of name" do 
     FactoryGirl.create(:feature)

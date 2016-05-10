@@ -2,6 +2,9 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 
+  it { should have_many(:features) }  
+  it { should have_many(:metrics).through(:features) }
+
   it "should have valid factory" do 
     user = FactoryGirl.build(:user)
     expect(user).to be_valid
@@ -22,6 +25,4 @@ RSpec.describe User, type: :model do
     expect(another_nameless_user).to_not be_valid
   end
 
-  it { should have_many(:features) }  
-  it { should have_many(:metrics).through(:features) }
 end
