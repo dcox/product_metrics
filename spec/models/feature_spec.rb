@@ -14,7 +14,9 @@ RSpec.describe Feature, type: :model do
   it { should belong_to(:user) }
   it { should have_many(:metrics) }
 
-  feature = FactoryGirl.create(:feature)
-  it { should validate_uniqueness_of(:name).case_insensitive }
+  it "validates uniqueness of name" do 
+    FactoryGirl.create(:feature)
+    should validate_uniqueness_of(:name).case_insensitive 
+  end
 
 end

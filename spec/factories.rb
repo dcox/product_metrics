@@ -12,15 +12,15 @@ FactoryGirl.define do
     feature
   end
 
-  factory :feature do
-    name        { generate(:name) }
-    user
-  end
-
   factory :user do
     email       { generate(:email) }
     password    "hello world"
     first_name  "Desiree"
     last_name   "Cox"
+  end
+
+  factory :feature do
+    name        { generate(:name) }
+    user
   end
 end
