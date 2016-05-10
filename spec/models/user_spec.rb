@@ -3,19 +3,23 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
 
   it "should have valid factory" do 
-    FactoryGirl.build(:user).should be_valid
+    user = FactoryGirl.build(:user)
+    expect(user).to be_valid
   end
 
   it "should require a corporate email" do
-    FactoryGirl.build(:user, :email => "des@yahoo.com").should_not be_valid
+    invalid_user = FactoryGirl.build(:user, :email => "des@yahoo.com")
+    expect(invalid_user).to_not be_valid
   end
 
   it "should require a first name" do
-    FactoryGirl.build(:user, :first_name => nil).should_not be_valid
+    nameless_user = FactoryGirl.build(:user, :first_name => nil)
+    expect(nameless_user).to_not be_valid
   end
 
   it "should require a last name" do
-    FactoryGirl.build(:user, :last_name => nil).should_not be_valid
+    another_nameless_user = FactoryGirl.build(:user, :last_name => nil)
+    expect(another_nameless_user).to_not be_valid
   end
 
   it { should have_many(:features) }  
